@@ -36,6 +36,7 @@ rm(dataset_std)
 library(dplyr)
 sub<-group_by(dataset, subject)
 act<-group_by(dataset, activity)
+rm(dataset)
 act<-summarise_each(act, funs(mean), -subject)
 sub<-summarise_each(sub, funs(mean), -activity)
 s<-as.vector(sub$subject)
@@ -51,3 +52,5 @@ rm(sub)
 rm(act)
 #Save the tidy dataset
 write.table(tidy_dataset, file="tidy_dataset.txt", row.names=FALSE)
+#Cleaning the workspace
+rm(list = ls(all = TRUE))
