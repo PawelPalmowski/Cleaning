@@ -11,16 +11,14 @@ colnames(X_train)<-read.table("./dataset/UCI HAR Dataset/features.txt")[,2]
 colnames(X_test)<-read.table("./dataset/UCI HAR Dataset/features.txt")[,2]
 X_train<-cbind(read.table("./dataset/UCI HAR Dataset/train/subject_train.txt"), read.table("./dataset/UCI HAR Dataset/train/y_train.txt"), X_train)
 X_test<-cbind(read.table("./dataset/UCI HAR Dataset/test/subject_test.txt"), read.table("./dataset/UCI HAR Dataset/test/y_test.txt"), X_test)
-colnames(X_train)[1]<-"subject"
-colnames(X_test)[1]<-"subject"
-colnames(X_train)[2]<-"activity"
-colnames(X_test)[2]<-"activity"
+colnames(X_train)[1:2]<-c("subject", "activity")
+colnames(X_test)[1:2]<-c("subject", "activity")
 #Merging datasets
 dataset<-X_test
 rm(X_test)
 dataset<-rbind(dataset, X_train)
 rm(X_train)
-#Adding descriptive variable name
+#Adding descriptive activity name
 act<-merge(dataset[,2], read.table("./dataset/UCI HAR Dataset/activity_labels.txt"), by.x=1, by.y=1)
 act<-act[ ,2]
 dataset$activity<-act
