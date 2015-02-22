@@ -39,14 +39,10 @@ act<-group_by(dataset, activity)
 rm(dataset)
 act<-summarise_each(act, funs(mean), -subject)
 sub<-summarise_each(sub, funs(mean), -activity)
-s<-as.vector(sub$subject)
-a<-as.vector(act$activity)
-rownames(act)<-a
-rownames(sub)<-s
-rm(a)
-rm(s)
-act[ ,1]<-NULL
-sub[ ,1]<-NULL
+sub$subject<-paste(sub$subject)
+act$activity<-paste(act$activity)
+colnames(sub)[1]<-"activity/subject"
+colnames(act)[1]<-"activity/subject"
 tidy_dataset<-rbind(act, sub)
 rm(sub)
 rm(act)
