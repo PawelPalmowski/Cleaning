@@ -50,4 +50,4 @@ tidy_dataset<-rbind(act, sub)
 rm(sub)
 rm(act)
 #Save the tidy dataset
-write.table(tidy_dataset, file="tidy_tataset.txt", row.names=FALSE)
+write.table(tidy_dataset, file="tidy_dataset.txt", row.names=FALSE)
