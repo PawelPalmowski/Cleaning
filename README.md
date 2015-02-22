@@ -15,3 +15,4 @@ The script:
     - first column (subject/activity) of sub/act is used as a label for rows
     - merging sub and act to tidy_dataset, sub and act removed
 - saving tidy dataset in working directory
+- cleanig the workspace
